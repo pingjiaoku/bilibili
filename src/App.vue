@@ -1,7 +1,5 @@
 <template>
   <div
-    text="20%"
-    
     uno-animate="bounce-in duration-1000ms delay-200ms iteration-1"
   >
     <compon></compon>

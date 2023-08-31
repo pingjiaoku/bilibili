@@ -29,7 +29,10 @@ export default defineConfig({
     presetUno(),
     presetAttributify({ prefix: "uno-", prefixedOnly: false }),
   ],
-  transformers: [transformerAttributifyJsx(), transformerVariantGroup()],
+  transformers: [
+    transformerAttributifyJsx(), // jsx支持
+    transformerVariantGroup(), // 变体组支持，"hover:bg-red hover:text-20" ==> "hover:(bg-red text-20)"
+  ],
   shortcuts: {
     "wh-full": "w-full h-full",
     "align-center": "items-center",
@@ -39,14 +42,10 @@ export default defineConfig({
     "f-e-c": "flex justify-evenly items-center",
   },
   rules: [
-    ["flex-grow", { "flex-grow": 1 }], // 填充flex下剩余宽度
     [
       /^wh-([\.\d]+)$/,
       ([, num]) => ({ height: `${num}px`, width: `${num}px` }),
     ],
-    // [/^border-([\.\d]+)$/, ([, num]) => ({ border: `#${num}px solid` })],
-    [/^flex-(\d+)$/, ([, num]) => ({ flex: num })],
-    [/^tst-([\.\d]+)$/, ([, num]) => ({ transition: `all ${num}ms` })],
     [/^index-(\d+)$/, ([, num]) => ({ "z-index": num })],
   ],
   theme: {
