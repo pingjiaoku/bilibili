@@ -10,7 +10,7 @@
 > | *     | 匹配0到无限次  |
 > | +     | 匹配1到无限次  |
 > | ?     | 匹配0或1次     |
-> | |     | 或者           |
+> | \|    | 或者           |
 > | num   | 数字           |
 > | str   | 字符           |
 > | rate  | 百分比         |
@@ -45,11 +45,14 @@
 | ------------------------------------ | ---------------------------------------------------- | --------------------------- |
 | transition-\${props}-${num}          | props: 过渡的属性，多个用逗号分隔；num：过度持续时间 | transition-color,width-1000 |
 | transition-${num}                    | 持续时间 num为毫秒                                   |
+| (transition-)?ease-${ease}           | 变化速度曲线                                         |
 | (transition-)?property-${props}      | 过渡的属性，多个用逗号分隔                           |
 | (transition-)?duration-${num \| str} | 持续时间 num默认毫秒                                 |
 | (transition-)?delay-${num \| str}    | 延迟时间 num默认毫秒                                 |
 | transition-none                      | 取消过度动画                                         |
 > props可能的值： all, color, background-color, border-color, outline-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+>
+> ease的值： linear(匀速), in(仅开始过渡), out(仅结束过渡), in-out(过渡), DEFAULT(过渡，比in-out快)
 
 ## transform
 | class                                     | 描述                               |
@@ -84,9 +87,13 @@
 > size可能的值： none, DEFAULT, sm, md, lg, xl, 2xl, inner
 
 ## border
-| class           | 描述     |
-| --------------- | -------- |
-| border-${num}   | 边框大小 |
-| border-${type}  | 边框样式 |
-| border-${color} | 边框颜色 |
-> type可能的值： solid, dashed, dotted, double, hidden, none, groove, ridge, inset, outset, inherit, initial, revert, revert-layer, unset,
+| class                            | 描述     |
+| -------------------------------- | -------- |
+| (border \| b)-\${pos}?-${num}    | 边框大小 |
+| (border \| b)-\${pos}?-${type}   | 边框样式 |
+| (border \| b)-\${pos}?-${color}  | 边框颜色 |
+| (border \| b)-\${pos}?-op-${num} | 边框颜色 |
+
+> pos为属性设置样式的位置，(l \| r \| t \| b \| x \| y)，以上样式均可单独设置，例如 `b-(x-(10 dotted blue op-10) y-(5 solid green op-80))`
+> 
+> type可能的值： solid, dashed, dotted, double, hidden, none, groove, ridge, inset, outset, inherit, initial, revert, revert-layer, 

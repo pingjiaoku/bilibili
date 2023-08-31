@@ -3,6 +3,7 @@ import {
   presetAttributify,
   presetUno,
   transformerAttributifyJsx,
+  transformerVariantGroup,
 } from "unocss";
 
 export default defineConfig({
@@ -28,7 +29,7 @@ export default defineConfig({
     presetUno(),
     presetAttributify({ prefix: "uno-", prefixedOnly: false }),
   ],
-  transformers: [transformerAttributifyJsx()],
+  transformers: [transformerAttributifyJsx(), transformerVariantGroup()],
   shortcuts: {
     "wh-full": "w-full h-full",
     "align-center": "items-center",
