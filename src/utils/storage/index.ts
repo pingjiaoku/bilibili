@@ -1,20 +1,43 @@
-export const MyStorage = {
+// 默认缓存期限为7天
+const DEFAULT_CACHE_TIME = 60 * 60 * 24 * 7;
+
+export default class Storage {
+  private storage: globalThis.Storage;
+  private prefixKey: string;
+
+  constructor(
+    storage: globalThis.Storage = localStorage,
+    prefixKey: string = ""
+  ) {
+    this.storage = storage;
+    this.prefixKey = prefixKey;
+  }
+
+  private getKey(key: string) {
+    return `${this.prefixKey}${key}`;
+  }
+
   /**
-   *
+   * 设置缓存
    * @param key
    * @param value
    * @param expire 单位秒
    */
-  set: (key: string, value: any, expire?: number) => {
+  set(key: string, value: any, expire: number = DEFAULT_CACHE_TIME) {
     const stringData = JSON.stringify({
       value,
       expire: !!expire ? new Date().getTime() + expire * 1000 : null,
     });
-    localStorage.setItem(key, stringData);
-  },
+    this.storage.setItem(this.getKey(key), stringData);
+  }
 
-  get: (key: string) => {
-    const stringData = localStorage.getItem(key);
+  /**
+   * 获取缓存的值
+   * @param key
+   * @returns success => 存入的值，fail => null
+   */
+  get(key: string) {
+    const stringData = this.storage.getItem(this.getKey(key));
     if (!stringData) return null;
     try {
       const jsonData = JSON.parse(stringData);
@@ -22,17 +45,21 @@ export const MyStorage = {
       if (!expire || expire > new Date().getTime()) {
         return value;
       }
-      MyStorage.remove(key);
+      this.remove(key);
       return null;
     } catch (error) {
-      MyStorage.remove(key);
+      this.remove(key);
       return null;
     }
-  },
+  }
 
-  // 返回剩余有效时间，单位秒，-1表示无限长
-  getExpire: (key: string) => {
-    const stringData = localStorage.getItem(key);
+  /**
+   * 获取剩余有效时间，单位秒
+   * @param key
+   * @returns
+   */
+  getExpire(key: string) {
+    const stringData = this.storage.getItem(this.getKey(key));
     if (!stringData) return 0;
     try {
       const jsonData = JSON.parse(stringData);
@@ -42,19 +69,29 @@ export const MyStorage = {
 
       const remainder = (expire - new Date().getTime()) / 1000;
       if (remainder > 0) return remainder;
-      MyStorage.remove(key);
+      this.remove(key);
       return 0;
     } catch (error) {
-      MyStorage.remove(key);
+      this.remove(key);
       return 0;
     }
-  },
+  }
 
-  remove: (key: string) => {
-    localStorage.removeItem(key);
-  },
+  /**
+   * 删除指定缓存
+   * @param key
+   */
+  remove(key: string) {
+    this.storage.removeItem(this.getKey(key));
+  }
 
-  clear: () => {
-    localStorage.clear();
-  },
-};
+  /**
+   * 清空缓存
+   */
+  clear() {
+    this.storage.clear();
+  }
+}
+
+export const lStorage = new Storage(localStorage);
+export const sStorage = new Storage(sessionStorage);

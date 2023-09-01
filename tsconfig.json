@@ -25,15 +25,14 @@
       "@/*": ["src/*"],
       "~/*": ["./*"]
     },
-    "types": ["vite/client"]
+    "types": ["vite/client", "node"]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "./types/auto-imports.d.ts",
-    "./types/components.d.ts"
+    "./types/*.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

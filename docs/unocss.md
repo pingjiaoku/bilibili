@@ -23,10 +23,10 @@
 > 高度同上
 
 ## space
-| class                                          | 描述    |
-| ---------------------------------------------- | ------- |
-| (p \| px \| py \| pl \| pr \| pt \| pb)-${num} | padding |
-| (m \| mx \| my \| ml \| mr \| mt \| mb)-${num} | margin  |
+| class                                                  | 描述    |
+| ------------------------------------------------------ | ------- |
+| (p \| px \| py \| pl \| pr \| pt \| pb)-${num \| rate} | padding |
+| (m \| mx \| my \| ml \| mr \| mt \| mb)-${num \| rate} | margin  |
 
 ## animate
  [animate_style](https://github.com/unocss/unocss/blob/main/packages/preset-wind/src/theme.ts) 
