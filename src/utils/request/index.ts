@@ -21,7 +21,6 @@ const baseConfig: AxiosRequestConfig = {
 const instance = axios.create(baseConfig);
 instance.interceptors.request.use(reqResolve, reqReject);
 instance.interceptors.response.use(resResolve, resReject);
-instance.defaults.withCredentials = true;
 
 export const Request = {
   // 自定义请求方法

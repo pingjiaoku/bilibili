@@ -1,4 +1,4 @@
-import { MyStorage } from "@/utils";
+import { lStorage } from "@/utils";
 import { useUserStore } from "@/store";
 import { authApi } from "@/api";
 
@@ -6,12 +6,12 @@ const TOKEN_KEY = "access_token";
 const TOEKN_DURATION = 12 * 60 * 60;
 
 export const Token = {
-  get: () => MyStorage.get(TOKEN_KEY) as string | null,
-  set: (token: string) => MyStorage.set(TOKEN_KEY, token, TOEKN_DURATION),
-  remove: () => MyStorage.remove(TOKEN_KEY),
+  get: () => lStorage.get(TOKEN_KEY) as string | null,
+  set: (token: string) => lStorage.set(TOKEN_KEY, token, TOEKN_DURATION),
+  remove: () => lStorage.remove(TOKEN_KEY),
   refresh: async () => {
     const userStore = useUserStore();
-    const expire = MyStorage.getExpire(TOKEN_KEY);
+    const expire = lStorage.getExpire(TOKEN_KEY);
     if (expire <= 0) {
       window.$message.error("登录已失效，请重新登录");
       console.error("token已过期，请重新登录");
