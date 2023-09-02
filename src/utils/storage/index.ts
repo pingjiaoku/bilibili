@@ -1,5 +1,4 @@
-// 默认缓存期限为7天
-const DEFAULT_CACHE_TIME = 60 * 60 * 24 * 7;
+
 
 export default class Storage {
   private storage: globalThis.Storage;
@@ -23,7 +22,7 @@ export default class Storage {
    * @param value
    * @param expire 单位秒
    */
-  set(key: string, value: any, expire: number = DEFAULT_CACHE_TIME) {
+  set(key: string, value: any, expire?: number) {
     const stringData = JSON.stringify({
       value,
       expire: !!expire ? new Date().getTime() + expire * 1000 : null,

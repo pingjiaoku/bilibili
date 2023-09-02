@@ -1,3 +1,7 @@
+import { cloneDeep } from "lodash-es";
+
+export { cloneDeep };
+
 export const messageError = (message: string) => {
   if (window.$message) {
     window.$message.info(message);

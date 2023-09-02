@@ -22,10 +22,15 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "~/*": ["./*"]
+      "~/*": ["./*"],
+      "@/*": ["./src/*"]
     },
-    "types": ["vite/client", "node"]
+    "types": [
+      "vite/client",
+      "node",
+      "unplugin-icons/types/vue",
+      "naive-ui/volar"
+    ]
   },
   "include": [
     "src/**/*.ts",
@@ -34,5 +39,6 @@
     "src/**/*.vue",
     "./types/*.d.ts"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "exclude": ["node_modules", "dist"]
 }
