@@ -1,24 +1,31 @@
+import "./styles/global.css";
+import "virtual:uno.css";
 import { createApp } from "vue";
 import App from "./App.vue";
+import AppProvider from "./components/common/app-provider.vue";
 import AppLoading from "./components/common/app-loading.vue";
-import { setupAssets } from "./plugins";
-import { setupStore } from "@/store";
+import { setupStore } from "./store";
 import { setupRouter } from "./router";
+import { setupDirectives } from "./directives";
 
 const setupApp = async () => {
-  // import assets: js、css
-  setupAssets();
+  // 提前挂载反馈组件
+  const appProvider = createApp(AppProvider);
+  appProvider.mount("#app-provider");
 
-  // app loading
+  // 挂载加载页面
   const appLoading = createApp(AppLoading);
-  appLoading.mount("#appLoading");
+  appLoading.mount("#app-loading");
 
   const app = createApp(App);
 
-  // store plugin: pinia
+  // 注册pinia
   setupStore(app);
 
-  // vue router
+  // 注册自定义指令
+  setupDirectives(app);
+
+  // 注册router
   await setupRouter(app);
 
   appLoading.unmount();

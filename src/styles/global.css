@@ -1,0 +1,13 @@
+@import "./reset.css";
+
+html,
+body,
+#app-provider,
+#app,
+#app-loading {
+  height: 100%;
+}
+
+#app-provider {
+  font-size: 14px;
+}

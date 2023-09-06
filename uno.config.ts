@@ -41,13 +41,7 @@ export default defineConfig({
     "f-a-c": "flex justify-around items-center",
     "f-e-c": "flex justify-evenly items-center",
   },
-  rules: [
-    [
-      /^wh-([\.\d]+)$/,
-      ([, num]) => ({ height: `${num}px`, width: `${num}px` }),
-    ],
-    [/^index-(\d+)$/, ([, num]) => ({ "z-index": num })],
-  ],
+  rules: [],
   theme: {
     colors: {
       primary: "rgb(var(--primary-color))",

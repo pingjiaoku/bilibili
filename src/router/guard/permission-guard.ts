@@ -3,7 +3,7 @@ import { Token } from "@/utils";
 
 const WHITE_LIST = ["/login", "/404"];
 export const createPermissionGuard = (router: Router) => {
-  router.beforeEach(async (to, from, next) => {
+  router.beforeEach(async (to) => {
     const token = Token.get();
 
     /** 没有token的情况 */

@@ -8,12 +8,12 @@ import { useUserStore } from "@/store";
 export const router = createRouter({
   history: createWebHistory("/"),
   routes: <RouteRecordRaw[]>basicRoutes,
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior() {
     return { left: 0, top: 0 };
   },
 });
 
-/** setup vue router. - [安装vue路由] */
+/** setup vue router */
 export const setupRouter = async (app: App<Element>) => {
   await addDynamicRoutes();
   setupRouterGuard(router);
@@ -43,7 +43,6 @@ export const addDynamicRoutes = async () => {
 
     // 添加动态路由
     asyncRoutes.forEach((route: Route.Row) => {
-
       if (router.hasRoute(route.name)) {
         console.error("存在重复的router：", route);
       } else {

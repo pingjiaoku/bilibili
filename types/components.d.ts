@@ -8,8 +8,18 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppLoading: typeof import('./../src/components/common/app-loading.vue')['default']
+    AppProvider: typeof import('./../src/components/common/app-provider.vue')['default']
     HelloWorld: typeof import('./../src/components/HelloWorld.tsx')['default']
+    IconEpFol: typeof import('~icons/ep/fol')['default']
     IconEpFold: typeof import('~icons/ep/fold')['default']
+    NButton: typeof import('naive-ui')['NButton']
+    NConfigProvider: typeof import('naive-ui')['NConfigProvider']
+    NDialogProvider: typeof import('naive-ui')['NDialogProvider']
+    NInput: typeof import('naive-ui')['NInput']
+    NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider']
+    NMessageProvider: typeof import('naive-ui')['NMessageProvider']
+    NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
+    NSpace: typeof import('naive-ui')['NSpace']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
