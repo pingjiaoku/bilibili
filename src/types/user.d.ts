@@ -15,3 +15,7 @@ declare global {
     userType: string;
   }
 }
+
+declare namespace UserParams {
+  interface GetUserParam{}
+}

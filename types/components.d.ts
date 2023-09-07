@@ -7,11 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AppLoading: typeof import('./../src/components/common/app-loading.vue')['default']
-    AppProvider: typeof import('./../src/components/common/app-provider.vue')['default']
-    HelloWorld: typeof import('./../src/components/HelloWorld.tsx')['default']
-    IconEpFol: typeof import('~icons/ep/fol')['default']
-    IconEpFold: typeof import('~icons/ep/fold')['default']
+    AppLoading: typeof import('./../src/components/app/app-loading.vue')['default']
+    AppProvider: typeof import('./../src/components/app/app-provider.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDialogProvider: typeof import('naive-ui')['NDialogProvider']
@@ -20,7 +17,9 @@ declare module 'vue' {
     NMessageProvider: typeof import('naive-ui')['NMessageProvider']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
     NSpace: typeof import('naive-ui')['NSpace']
+    NTable: typeof import('naive-ui')['NTable']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SvgIcon: typeof import('./../src/components/common/svg-icon.vue')['default']
   }
 }

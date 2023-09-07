@@ -42,7 +42,7 @@ export const addDynamicRoutes = async () => {
     }
 
     // 添加动态路由
-    asyncRoutes.forEach((route: Route.Row) => {
+    asyncRoutes.forEach((route: Sys.Route) => {
       if (router.hasRoute(route.name)) {
         console.error("存在重复的router：", route);
       } else {
@@ -70,7 +70,7 @@ export const resetRouter = async () => {
   });
 };
 
-const getRouteName = (route: Route.Row) => {
+const getRouteName = (route: Sys.Route) => {
   const names = [route.name];
   if (route.children && route.children.length) {
     names.push(...route.children.flatMap((item) => getRouteName(item)));
