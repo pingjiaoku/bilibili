@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <app-provider>
+    <router-view />
+  </app-provider>
 </template>
 
 <script lang="tsx" setup></script>

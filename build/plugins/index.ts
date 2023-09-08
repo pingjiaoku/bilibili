@@ -5,6 +5,7 @@ import { createHtmlPlugin } from "vite-plugin-html";
 import Components from "unplugin-vue-components/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 import AutoImport from "unplugin-auto-import/vite";
+import {ImportMetaEnv} from "../../types/env"
 
 export const setupVitePlugins = (viteEnv: ImportMetaEnv) => {
   const plugins = [
@@ -14,7 +15,7 @@ export const setupVitePlugins = (viteEnv: ImportMetaEnv) => {
     createHtmlPlugin({
       inject: {
         data: {
-          title: viteEnv.VITE_TITLE,
+          title: viteEnv.VITE_APP_TITLE,
         },
       },
     }),

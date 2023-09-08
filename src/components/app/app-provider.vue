@@ -10,10 +10,8 @@
       <n-dialog-provider>
         <n-notification-provider>
           <n-message-provider>
-            <div id="app">
-              <div id="app-loading"></div>
-            </div>
-            <providerContent></providerContent>
+            <slot></slot>
+            <provider-content></provider-content>
           </n-message-provider>
         </n-notification-provider>
       </n-dialog-provider>
@@ -45,4 +43,3 @@ const providerContent = () => {
   return <div></div>;
 };
 </script>
-<style scoped></style>

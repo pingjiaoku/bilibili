@@ -2,25 +2,17 @@ import "./styles/global.css";
 import "virtual:uno.css";
 import { createApp } from "vue";
 import App from "./App.vue";
-import AppProvider from "./components/app/app-provider.vue";
 import AppLoading from "./components/app/app-loading.vue";
 import { setupStore } from "./store";
 import { setupRouter } from "./router";
 import { setupDirectives } from "./directives";
-import { Icon } from "@iconify/vue";
 
 const setupApp = async () => {
-  // 提前挂载反馈组件
-  const appProvider = createApp(AppProvider);
-  appProvider.mount("#app-provider");
-
   // 挂载加载页面
   const appLoading = createApp(AppLoading);
-  appLoading.mount("#app-loading");
+  appLoading.mount("#app");
 
   const app = createApp(App);
-
-  app.component("Icon", Icon);
 
   // 注册pinia
   setupStore(app);
@@ -31,9 +23,12 @@ const setupApp = async () => {
   // 注册router
   await setupRouter(app);
 
-  appLoading.unmount();
+  // loading 久一点
+  setTimeout(() => {
+    appLoading.unmount();
 
-  app.mount("#app");
+    app.mount("#app");
+  }, 1000);
 };
 
 setupApp();
