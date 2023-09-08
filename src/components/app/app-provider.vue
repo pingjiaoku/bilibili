@@ -11,7 +11,7 @@
         <n-notification-provider>
           <n-message-provider>
             <slot></slot>
-            <provider-content></provider-content>
+            <provider-content />
           </n-message-provider>
         </n-notification-provider>
       </n-dialog-provider>
